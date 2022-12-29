@@ -13,35 +13,30 @@ import java.util.*;
 public class BancoServicio {
 
 
-    static Scanner leer = new Scanner(System.in).useDelimiter("\n");
+    static ApplicationContext context1 = SpringApplication.run(BancoEjercicioApplication1.class);
+    static UsuarioRepository repository = context1.getBean(UsuarioRepository.class);
+
     static List<Cuenta> usuarios = new ArrayList<>();
+    static Scanner leer = new Scanner(System.in).useDelimiter("\n");
     int opcion;
-    private UsuarioServicio usuarioServicio;
-    private CuentaServicio cuentaServicio;
 
 
     public BancoServicio() {
-    }
-
-    public BancoServicio(ApplicationContext context){
-
-        usuarioServicio = (UsuarioServicio) context.getBean("usuarioServicio");
-        cuentaServicio = (CuentaServicio) context.getBean("cuentaServicio");
 
 
     }
-
 
 
     public void menu() {
 
-        ApplicationContext context1 = SpringApplication.run(BancoEjercicioApplication1.class);
-        UsuarioRepository repository = context1.getBean(UsuarioRepository.class);
-
 
         UsuarioServicio us = (UsuarioServicio) context1.getBean("usuarioServicio");
+        CuentaServicio cs = (CuentaServicio) context1.getBean("cuentaServicio");
         us.setRepository(repository);
+        cs.setRepository(repository);
         us.agregar();
+
+        usuarios = repository.findAll();
 
 
 
@@ -68,7 +63,7 @@ public class BancoServicio {
                         us.testFindAll();
                         break;
                     case 3:
-                        cuentaServicio.validar();
+                        cs.validar();
                         break;
                     case 4:
                         System.out.println("Usted ha salido del banco, que tenga un buen dia");

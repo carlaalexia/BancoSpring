@@ -1,5 +1,6 @@
 package com.example.BancoEjercicio1.Servicios;
 
+
 import com.example.BancoEjercicio1.Entidades.Cuenta;
 import org.springframework.stereotype.Component;
 import java.util.InputMismatchException;
@@ -8,7 +9,8 @@ import java.util.InputMismatchException;
 public class CuentaServicio extends UsuarioServicio {
 
 
-    public static void validar() {
+
+    public void validar() {
 
         System.out.println("Ingrese su nombre de usuario");
         String usuario = leer.next();
@@ -27,7 +29,7 @@ public class CuentaServicio extends UsuarioServicio {
     }
 
 
-    public static void segundoMenu(Cuenta c) {
+    public void segundoMenu(Cuenta c) {
 
         int op;
 
@@ -49,14 +51,17 @@ public class CuentaServicio extends UsuarioServicio {
                 case 1:
                     System.out.println("Usted va a realizar un deposito en su cuenta");
                     realizarDeposito(c);
+                    repository.save(c);
                     break;
                 case 2:
                     System.out.println("Usted va a extraer plata de su cuenta");
                     extraerPlata(c);
+                    repository.save(c);
                     break;
                 case 3:
                     System.out.println("Usted va a realizar una transferencia");
                     transferir(c);
+                    repository.save(c);
                     break;
                 case 4:
                     System.out.println("Consultar saldo actual");
@@ -139,7 +144,7 @@ public class CuentaServicio extends UsuarioServicio {
 
     }
 
-    public static void transferir(Cuenta c){
+    public void transferir(Cuenta c){
 
         System.out.println("¿A quien le desea trasnferir?");
         System.out.println("Lista de usuarios de nuestro Banco: ");

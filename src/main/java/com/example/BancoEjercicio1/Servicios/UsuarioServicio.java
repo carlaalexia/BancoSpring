@@ -8,9 +8,11 @@ import java.util.*;
 @Component
 public class UsuarioServicio extends BancoServicio {
 
+
     static int aleatorio;
 
-    public UsuarioRepository repository;
+
+    UsuarioRepository repository;
 
     public void setRepository(UsuarioRepository repository) {
 
@@ -119,7 +121,6 @@ public class UsuarioServicio extends BancoServicio {
 
         c.setMontoDinero(5000);
 
-        usuarios.add(c);
         repository.save(c);
 
 
@@ -150,47 +151,6 @@ public class UsuarioServicio extends BancoServicio {
         return aleatorio;
     }
 
-
-    public void agregarUsuarios(){
-
-        Cuenta c1 = new Cuenta("Andres", "Moncalvo", "moncalvoandres@gmail.com", 30,
-                11303030, "Vilela 2964", 122456789,
-                "andres.moncalvo", 23444, 10000);
-
-
-        Cuenta c2 = new Cuenta("Carla", "Marquez", "mcarlaalexia@gmail.com", 26,
-                1160323634, "Vilela 2970",123456789,
-                "carla.marquez", 12345, 150000);
-
-        Cuenta c3 = new Cuenta("Anabella", "Delgado", "anadel@gmail.com", 27,
-                11793426, "Ecuador 123",123456666,
-                "anabella.delgado", 66653, 6500);
-
-        Cuenta c4 = new Cuenta("Monica", "Barreto", "barretom@gmail.com", 56,
-                11444366, "Gelly y Obes 992",198765432,
-                "monica.barreto", 29941, 4000);
-
-        Cuenta c5 = new Cuenta("Victoria", "Corton", "cortonv@gmail.com", 27, 11454545,
-                "vidt 456", 454545454,
-                "victoria.corton", 12344, 80000  );
-
-        Cuenta c6 = new Cuenta("Soledad", "Marquez", "marquezsol@gmail.com", 32,
-                11676767, "Gelly y obes 990",
-                676767678, "soledad.marquez", 12345, 10000);
-
-        Cuenta c7 = new Cuenta("Ezequiel", "Diaz", "diaze@gmail.com", 31, 1144556677,
-                "Tigre 123", 987654321, "ezequiel.diaz", 54321, 1000);
-
-        usuarios.add(c1);
-        usuarios.add(c2);
-        usuarios.add(c3);
-        usuarios.add(c4);
-        usuarios.add(c5);
-        usuarios.add(c6);
-        usuarios.add(c7);
-
-
-    }
 
 
     public void agregar(){
@@ -231,6 +191,7 @@ public class UsuarioServicio extends BancoServicio {
         repository.save(c5);
         repository.save(c6);
         repository.save(c7);
+
 
     }
     public void testFindAll(){
