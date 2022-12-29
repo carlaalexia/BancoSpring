@@ -21,11 +21,6 @@ public class BancoServicio {
     int opcion;
 
 
-    public BancoServicio() {
-
-
-    }
-
 
     public void menu() {
 
