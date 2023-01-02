@@ -1,9 +1,6 @@
 package com.example.BancoEjercicio1.Servicios;
 
-import com.example.BancoEjercicio1.BancoEjercicioApplication1;
-import com.example.BancoEjercicio1.Entidades.Cuenta;
-import com.example.BancoEjercicio1.Repositorios.UsuarioRepository;
-import org.springframework.boot.SpringApplication;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -12,29 +9,23 @@ import java.util.*;
 @Component
 public class BancoServicio {
 
+    private Scanner leer = new Scanner(System.in).useDelimiter("\n");
 
-    static ApplicationContext context1 = SpringApplication.run(BancoEjercicioApplication1.class);
-    static UsuarioRepository repository = context1.getBean(UsuarioRepository.class);
-
-    static List<Cuenta> usuarios = new ArrayList<>();
-    static Scanner leer = new Scanner(System.in).useDelimiter("\n");
     int opcion;
 
+    UsuarioServicio us;
+    CuentaServicio cs;
 
 
+    public BancoServicio(ApplicationContext context1){
+
+        us = (UsuarioServicio) context1.getBean("usuarioServicio");
+        cs = (CuentaServicio) context1.getBean("cuentaServicio");
+
+    }
     public void menu() {
 
-
-        UsuarioServicio us = (UsuarioServicio) context1.getBean("usuarioServicio");
-        CuentaServicio cs = (CuentaServicio) context1.getBean("cuentaServicio");
-        us.setRepository(repository);
-        cs.setRepository(repository);
         us.agregar();
-
-        usuarios = repository.findAll();
-
-
-
 
         do {
 

@@ -2,12 +2,25 @@ package com.example.BancoEjercicio1.Servicios;
 
 
 import com.example.BancoEjercicio1.Entidades.Cuenta;
+import com.example.BancoEjercicio1.Repositorios.UsuarioRepository;
 import org.springframework.stereotype.Component;
 import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
 
 @Component
-public class CuentaServicio extends UsuarioServicio {
+public class CuentaServicio{
 
+
+    private Scanner leer = new Scanner(System.in);
+
+    public List<Cuenta> usuarios;
+
+    private UsuarioRepository repository;
+
+    public CuentaServicio(UsuarioRepository repository) {
+        this.repository = repository;
+    }
 
 
     public void validar() {
@@ -74,7 +87,7 @@ public class CuentaServicio extends UsuarioServicio {
         } while (op != 5);
     }
 
-    public static void realizarDeposito(Cuenta c) {
+    public void realizarDeposito(Cuenta c) {
 
         boolean leido;
         System.out.println("¿Cuanto desea ingresar?");
@@ -102,7 +115,7 @@ public class CuentaServicio extends UsuarioServicio {
 
     }
 
-    public static void extraerPlata(Cuenta c) {
+    public void extraerPlata(Cuenta c) {
 
         boolean leido;
         System.out.println("¿Cuanto desea sacar?");

@@ -6,18 +6,20 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 @Component
-public class UsuarioServicio extends BancoServicio {
+public class UsuarioServicio{
 
 
-    static int aleatorio;
+    List<Cuenta> usuarios = new ArrayList<>();
+    private int aleatorio;
 
+    private Scanner leer = new Scanner(System.in);
 
-    UsuarioRepository repository;
+    private UsuarioRepository repository;
 
-    public void setRepository(UsuarioRepository repository) {
-
+    public UsuarioServicio(UsuarioRepository repository) {
         this.repository = repository;
     }
+
 
 
 
@@ -194,6 +196,8 @@ public class UsuarioServicio extends BancoServicio {
         repository.save(c7);
 
 
+        usuarios = repository.findAll();
+
     }
     public void testFindAll(){
 
@@ -210,7 +214,6 @@ public class UsuarioServicio extends BancoServicio {
         System.out.println(repository.findAll());
 
     }
-
 
 
 }

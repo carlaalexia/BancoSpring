@@ -5,10 +5,7 @@ import com.example.BancoEjercicio1.Servicios.BancoServicio;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
 
-@Component
 @SpringBootApplication
 public class BancoEjercicioApplication1 {
 
